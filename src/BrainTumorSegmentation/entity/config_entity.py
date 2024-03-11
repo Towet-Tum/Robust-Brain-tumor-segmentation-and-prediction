@@ -18,3 +18,19 @@ class DataPreprocessConfig:
     masks: Path
     splitted_dataset: Path
     dataset_path: Path
+
+
+@dataclass(frozen=True)
+class TrainingConfig:
+    root_dir: Path
+    model_path: Path
+    train_img_dir: str
+    train_mask_dir: str
+    val_img_dir: str
+    val_mask_dir: str
+    epochs: int
+    batch_size: int
+    img_size: int
+    lr: float
+    num_classes: int
+    channels: int

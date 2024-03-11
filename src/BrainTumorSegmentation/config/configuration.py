@@ -3,6 +3,7 @@ from BrainTumorSegmentation.utils.common import read_yaml, create_directories
 from BrainTumorSegmentation.entity.config_entity import (
     DataIngestionConfig,
     DataPreprocessConfig,
+    TrainingConfig,
 )
 
 
@@ -40,3 +41,23 @@ class ConfigurationManager:
             dataset_path=config.dataset_path,
         )
         return data_preprocess_config
+
+    def get_training_config(self) -> TrainingConfig:
+        config = self.config.training
+        params = self.params
+        create_directories([config.root_dir])
+        training_config = TrainingConfig(
+            root_dir=config.root_dir,
+            model_path=config.model_path,
+            train_img_dir="artifacts/data_preprocess/processed_dataset/train/images/",
+            train_mask_dir="artifacts/data_preprocess/processed_dataset/train/masks/",
+            val_img_dir="artifacts/data_preprocess/processed_dataset/val/images/",
+            val_mask_dir="artifacts/data_preprocess/processed_dataset/val/masks/",
+            epochs=params.EPOCHS,
+            batch_size=params.BATCH_SIZE,
+            img_size=params.IMG_SIZE,
+            num_classes=params.NUM_CLASSES,
+            channels=params.CHANNELS,
+            lr=params.LEARNING_RATE,
+        )
+        return training_config
