@@ -5,3 +5,15 @@ data_ingestion:
   source_URL: https://drive.google.com/file/d/1-DymkK_pIvoNsXwTDJ85NZoiR5sXr0L-/view?usp=sharing
   local_data_file: artifacts/data_ingestion/BraTs2020.zip
   unzip_dir: artifacts/data_ingestion/BraTs2020
+
+data_preprocess:
+  root_dir: artifacts/data_preprocess
+  dataset_path: artifacts/data_preprocess/dataset
+  images: artifacts/data_preprocess/dataset/images
+  masks: artifacts/data_preprocess/dataset/masks
+  splitted_dataset: artifacts/data_preprocess/processed_dataset
+
+
+training:
+  root_dir: artifacts/training
+  model_path: artifacts/training/BraTs2020.h5

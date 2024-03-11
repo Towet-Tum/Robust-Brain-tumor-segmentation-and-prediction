@@ -8,3 +8,13 @@ class DataIngestionConfig:
     source_URL: Path
     local_data_file: Path
     unzip_dir: Path
+
+
+@dataclass(frozen=True)
+class DataPreprocessConfig:
+    root_dir: Path
+    dataset: str
+    images: Path
+    masks: Path
+    splitted_dataset: Path
+    dataset_path: Path

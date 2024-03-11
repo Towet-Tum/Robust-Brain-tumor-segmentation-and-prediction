@@ -1,6 +1,9 @@
 from BrainTumorSegmentation.constants import *
 from BrainTumorSegmentation.utils.common import read_yaml, create_directories
-from BrainTumorSegmentation.entity.config_entity import DataIngestionConfig
+from BrainTumorSegmentation.entity.config_entity import (
+    DataIngestionConfig,
+    DataPreprocessConfig,
+)
 
 
 class ConfigurationManager:
@@ -22,3 +25,18 @@ class ConfigurationManager:
             unzip_dir=config.unzip_dir,
         )
         return data_ingestion_config
+
+    def get_preprocess_config(self) -> DataPreprocessConfig:
+        config = self.config.data_preprocess
+        create_directories(
+            [config.root_dir, config.images, config.masks, config.splitted_dataset]
+        )
+        data_preprocess_config = DataPreprocessConfig(
+            root_dir=config.root_dir,
+            dataset="artifacts/data_ingestion/BraTs2020/BraTS2020/BraTS2020_TrainingData/MICCAI_BraTS2020_TrainingData/",
+            images=config.images,
+            masks=config.masks,
+            splitted_dataset=config.splitted_dataset,
+            dataset_path=config.dataset_path,
+        )
+        return data_preprocess_config
