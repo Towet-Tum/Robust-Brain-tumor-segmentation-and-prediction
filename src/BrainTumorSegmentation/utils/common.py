@@ -9,8 +9,6 @@ from box import ConfigBox
 from pathlib import Path
 from typing import Any
 import base64
-import tensorflow as tf
-import matplotlib.pyplot as plt
 
 
 @ensure_annotations
